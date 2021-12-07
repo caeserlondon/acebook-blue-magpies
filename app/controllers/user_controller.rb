@@ -3,7 +3,7 @@ class UserController < ApplicationController
   end
 
   def sign_up
-    @test= "Hello world!"
+    @user = User.new
   end
 
 end
