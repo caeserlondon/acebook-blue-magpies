@@ -1,4 +1,7 @@
 require 'rails_helper'
+# require './spec/helpers/post_helper'
+
+# class ProfileControllerTest < ActionDispatch::IntegrationTest
 
 RSpec.feature "", type: :feature do
   scenario "Post has its own page" do
@@ -11,6 +14,10 @@ RSpec.feature "", type: :feature do
  
   end
 end
+
+
+
+
 
 
   
