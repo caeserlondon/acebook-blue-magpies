@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       shout "saved new user"
-      redirect_to @user
+      redirect_to root_path
     else
       shout "failed to save new user"
       render :new
