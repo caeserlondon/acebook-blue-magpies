@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  root "user#index"
+  root "users#index"
 
-  get 'user/index'
-  get "/user", to: "user#index"
-  get "/sign_up", to: "user#sign_up"
+  get 'users/index'
+  get "/users", to: "users#index"
+  get "/sign_up", to: "users#new"
+
   # get "/posts"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :users

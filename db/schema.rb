@@ -38,4 +38,5 @@ ActiveRecord::Schema.define(version: 2021_12_08_151542) do
   end
 
   add_foreign_key "comments", "posts"
+
 end
