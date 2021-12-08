@@ -1,0 +1,24 @@
+<h1> <%= @post.message %> </h1>
+
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <p>
+    <%= comment.comment_body %>
+  </p>
+<% end %>
+
+<%= form_with model: [ @post, @post.comments.build ], local: true do
+  |form|  %>
+  <p>
+    <%= form.label :add_your_comments %><br>
+    <%= form.text_area :comment_body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to posts_url do %>
+    Back to Posts
+<% end %>
+
