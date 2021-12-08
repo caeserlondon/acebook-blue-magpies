@@ -8,10 +8,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show
-    shout "show page loaded"
-    render :new
-  end
+  # def show
+  #   shout "show page loaded"
+  #   render :new
+  # end
 
   def create
     @user = User.new(user_params)
