@@ -1,6 +1,4 @@
-<h1>Sign up</h1>
-
-<%=form_with model: @user do |form| %>
+<%=form_with model: user do |form| %>
     <div>
         <%= form.label :name %><br>
         <%= form.text_field :name %>
@@ -15,7 +13,4 @@
         <%= form.label :password %><br>
         <%= form.text_field :password %>
     </div>
-    <% end %>
-    <%= link_to sign_up_path do %>
-     Sign up
-    <% end %>
+<% end %>
