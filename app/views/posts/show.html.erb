@@ -1,5 +1,16 @@
 <h1> <%= @post.message %> </h1>
 
+<%= form_with model: [ @post, @post.comments.build ] do
+  |form|  %>
+  <p>
+    <%= form.label :Add_your_comments %><br>
+    <%= form.text_area :comment_body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
 <%= link_to posts_url do %>
     Back to Posts
 <% end %>

@@ -6,7 +6,7 @@ RSpec.feature "", type: :feature do
       click_button "Submit"
       click_link "Post 1"
       expect(page).to have_content 'Post 1'
-      expect(page).to have_content 'Submit comment'
+      expect(page).to have_button 'Create Comment'
    
     end
   end
