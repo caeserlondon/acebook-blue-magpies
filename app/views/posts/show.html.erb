@@ -7,7 +7,7 @@
   </p>
 <% end %>
 
-<%= form_with model: [ @post, @post.comments.build] do
+<%= form_with model: [ @post, @post.comments.build ], local: true do
   |form|  %>
   <p>
     <%= form.label :add_your_comments %><br>
