@@ -1,6 +1,10 @@
+<ul>
 <% @posts.reverse_each do |post| %>
-  <p><%= post.message %></p>
+<li>
+  <%= link_to post.message, post %> 
+</li>
 <% end %>
+</ul>
 
 <%= link_to new_post_path do %>
   New post

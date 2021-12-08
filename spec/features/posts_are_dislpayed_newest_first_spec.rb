@@ -9,7 +9,7 @@ RSpec.feature "", type: :feature do
     click_link "New post"
     fill_in "Message", with: "Post 2"
     click_button "Submit"
-    expect(page.find('p:nth-child(1)')).to have_content 'Post 2'
-    expect(page.find('p:nth-child(2)')).to have_content 'Post 1'
+    expect(page.find('li:nth-child(1)')).to have_content 'Post 2'
+    expect(page.find('li:nth-child(2)')).to have_content 'Post 1'
   end
 end
