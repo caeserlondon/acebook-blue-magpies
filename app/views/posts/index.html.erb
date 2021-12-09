@@ -1,7 +1,8 @@
 <ul>
 <% @posts.reverse_each do |post| %>
 <li>
-  <%= link_to post.message, post %> 
+  <%= link_to post.message, post %>
+  <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes" %></p>
 </li>
 <% end %>
 </ul>
