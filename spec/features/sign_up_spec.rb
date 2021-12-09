@@ -9,19 +9,15 @@ RSpec.feature "Sign up", type: :feature do
   let (:error_pw_short) { "Password is too short (minimum is 8 characters)" }
   let (:error_pw_long) { "Password is too long (maximum is 20 characters)" }
   let (:error_em_inv) { "Email is invalid" }
+  let (:error_name) { "Name can't be blank" }
 
-  scenario "Landing page has a sign up button and information-entry fields" do
-    expect(page).to have_content("Sign up")
-    expect(page).to have_content("Name")
-    expect(page).to have_content("Email")
-    expect(page).to have_content("Password")
+  scenario "The sign-up page has a title and information-entry fields" do
+    page_should_have_content(["Sign up", "Name", "Email", "Password"])
   end
 
   scenario "If no fields are filled out, displays the appropriate error messages" do
     click_button "Enter details"
-    expect(page).to have_content("Name can't be blank")
-    expect(page).to have_content(error_em_inv)
-    expect(page).to have_content(error_pw_short)
+    page_should_have_content([error_name, error_em_inv, error_pw_short])
   end
 
   scenario "Password can't be too long or too short" do
@@ -47,5 +43,9 @@ RSpec.feature "Sign up", type: :feature do
     fill_in field, with: with_text
     click_button "Enter details"
     expect(page.has_content?(expectation)).to eq expected
+  end
+
+  def page_should_have_content(contents)
+    contents.each {|cont| expect(page).to have_content(cont)}
   end
 end
