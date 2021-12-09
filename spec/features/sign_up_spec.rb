@@ -46,7 +46,6 @@ RSpec.feature "Sign up", type: :feature do
   def test_field(field, with_text, expectation = null, expected = true)
     fill_in field, with: with_text
     click_button "Enter details"
-    expect(page).to have_content(expectation) if expected
-    expect(page).not_to have_content(expectation) if !expected
+    expect(page.has_content?(expectation)).to eq expected
   end
 end
