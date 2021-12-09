@@ -7,6 +7,16 @@ class LikesController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  #////////HOW TO UNLIKE A POST////////
+  # def destroy
+  #   if !(already_liked?)
+  #     flash[:notice] = "Cannot unlike"
+  #   else
+  #     @like.destroy
+  #   end
+  #   redirect_to post_path(@post)
+  # end
+
   private
 
   def find_post
