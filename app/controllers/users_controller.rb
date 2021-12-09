@@ -8,17 +8,17 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show
-    shout "show page loaded"
-    render :new
-  end
+  # def show
+  #   shout "show page loaded"
+  #   render :new
+  # end
 
   def create
     @user = User.new(user_params)
 
     if @user.save
       shout "saved new user"
-      redirect_to @user
+      redirect_to root_path
     else
       shout "failed to save new user"
       render :new
