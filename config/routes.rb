@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
 
   get '/login', to: 'sessions#login'
-  post '/login', to: 'sessions#create'
+  post '/login', to:'sessions#create'
+  get '/users', to: 'users#show'
   post '/logout', to: 'sessions#destroy'
   post '/logout', to: 'sessions#destroy'
 
@@ -19,5 +20,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     resources :likes
+    
   end
 end
