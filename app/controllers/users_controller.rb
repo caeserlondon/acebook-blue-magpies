@@ -16,11 +16,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    
     if @user.save
       shout "saved new user"
       session[:user_id] = @user.id
-      redirect_to root_path
+      login_url @user
+      redirect_to users_path
     else
       shout "failed to save new user"
       render :new
