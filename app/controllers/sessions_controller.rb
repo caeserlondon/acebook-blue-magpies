@@ -13,4 +13,9 @@ class SessionsController < ApplicationController
             redirect_to login_path, notice: message
         end
     end
+
+    def destroy
+        logout_path
+        redirect_to root_url
+      end
 end
