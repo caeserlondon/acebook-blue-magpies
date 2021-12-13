@@ -11,15 +11,16 @@ RSpec.feature "", type: :feature do
   end
 
   scenario "navbar links takes user to appropriate page" do
-    click_link "Login"
-    expect(current_path).to eq '/login'
-    click_link "Sign up"
-    expect(current_path).to eq '/users/new'
-    click_link "Posts"
-    expect(current_path).to eq '/posts'
+    check_link_path("Login", '/login')
+    check_link_path("Sign up", '/users/new')
+    check_link_path("Posts", '/posts')
     sign_up
     log_in
-    click_link "Profile"
-    expect(current_path).to eq '/users'
+    check_link_path("Profile", '/users')
+  end
+
+  def check_link_path(link, path)
+    click_link link
+    expect(current_path).to eq path
   end
 end

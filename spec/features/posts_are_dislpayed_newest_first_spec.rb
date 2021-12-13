@@ -7,6 +7,4 @@ RSpec.feature "", type: :feature do
     new_post("Post 2")
     expect(page.body.index("Post 2")).to be < (page.body.index("Post 1"))
   end
-
-
 end
