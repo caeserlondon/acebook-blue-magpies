@@ -1,11 +1,12 @@
-<h1> <%= @post.message %> </h1>
+  <h1> User name: <%= @post.name %> </h1>
+  <h3>Message: <%= @post.message %> </h3>
 <%= button_to "Like", post_likes_path(@post), method: :post %>
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? "Like" : "Likes" %></p>
 
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
   <p>
-    <%= comment.comment_body %>
+    User <%= comment.name %>: <%= comment.comment_body %>
   </p>
 <% end %>
 
@@ -14,6 +15,8 @@
   <p>
     <%= form.label :add_your_comments %><br>
     <%= form.text_area :comment_body %>
+
+    <%= form.hidden_field :user_id, value: session[:current_user_id] %>
   </p>
   <p>
     <%= form.submit %>
