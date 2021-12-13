@@ -11,6 +11,8 @@ RSpec.feature "", type: :feature do
   end
 
   scenario "navbar links takes user to appropriate page" do
+    sign_up
+    log_in
     check_link_path("Login", '/login')
     check_link_path("Sign up", '/users/new')
     check_link_path("Posts", '/posts')
