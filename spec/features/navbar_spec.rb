@@ -12,7 +12,6 @@ RSpec.feature "", type: :feature do
 
   scenario "navbar links takes user to appropriate page" do
     sign_up
-    log_in
     check_link_path("Login", '/login')
     check_link_path("Sign up", '/users/new')
     check_link_path("Posts", '/posts')
@@ -20,7 +19,6 @@ RSpec.feature "", type: :feature do
 
   scenario "navbar Profile link goes to logged-in user's profile" do
     sign_up
-    log_in
     user = User.first
     check_link_path("Profile", "/users/#{user.id}")
     expect(page).to have_content user.name

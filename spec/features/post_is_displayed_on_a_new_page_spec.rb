@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.feature "", type: :feature do
   scenario "Post has its own page" do
     sign_up
-    log_in
     visit "/posts"
     new_post("Post 1", true)
     expect(page.status_code).to eq 200
