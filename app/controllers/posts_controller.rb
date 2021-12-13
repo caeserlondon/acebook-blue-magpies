@@ -9,7 +9,10 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+  @posts = Post.all
+  #   SELECT users.name, users.id, posts.message
+  #   FROM users, posts
+  #   WHERE posts.user_id = users.id
   end
 
   def show
@@ -21,4 +24,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:message, :user_id)
   end
+
 end
