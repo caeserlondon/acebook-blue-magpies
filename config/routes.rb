@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
-  root "users#index"
+  root "sessions#login"
 
-  get 'users/index'
-  get "/users", to: "users#index"
-  get "/sign_up", to: "users#new"
+  # get 'users/index'
+  # get "/users", to: "users#index"
+  # get "/sign_up", to: "users#new"
+  resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
+
+  get '/login', to: 'sessions#login'
+  post '/login', to:'sessions#create'
+  get '/users', to: 'users#show'
+  post '/logout', to: 'sessions#destroy'
+  post '/logout', to: 'sessions#destroy'
 
   # get "/posts"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :users
+
   resources :posts do
     resources :comments
     resources :likes
+    
   end
 end
