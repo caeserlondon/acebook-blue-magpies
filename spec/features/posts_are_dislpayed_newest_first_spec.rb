@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "", type: :feature do
   scenario "Posts are displayed with newest first" do
+    sign_up
+    log_in
     visit "/posts"
     new_post("Post 1")
     new_post("Post 2")
