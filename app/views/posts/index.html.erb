@@ -1,5 +1,5 @@
 <h2>Hi <%= session[:user_id] %></h2>
-<h2>Hi <%= @user_id %></h2>
+<h2>Hi <%= current_user.name %></h2>
 
 <ul>
 <% @posts.reverse_each do |post| %>

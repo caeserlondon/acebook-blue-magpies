@@ -8,7 +8,7 @@
   <%= form.label :message %>
   <%= form.text_field :message %>
 
-  <%= form.hidden_field :user_id, :value => @current_user.id %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
   
   <%= form.submit "Submit" %>
 <% end %>
