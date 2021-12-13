@@ -1,14 +1,4 @@
 <h1>Welcome to <span style="color: #191970">Blue-Magpie Acebook!</span></h1>
-<h1>You are logged in as <%= @user.name %></h1>
-
-<%= @user.email %>
-<div>
-
-<h3> Your ID is:    <%= @user.id %> </h3>
-<div>
-
-
-<%= link_to "Home", root_path %>
-<%# <%= form_tag '/users' %>
+<h1>You are viewing <%= @user.name %>'s profile</h1>
 
 <%= link_to "Log out", logout_path, method: :delete %>
