@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def shout(message)
-    puts "\n#{"="*35}\nPAY ATTENTION TO ME!\n#{message}\n#{"="*35}\n\n"
+    # puts "\n#{"="*35}\nPAY ATTENTION TO ME!\n#{message}\n#{"="*35}\n\n"
   end
 
 end

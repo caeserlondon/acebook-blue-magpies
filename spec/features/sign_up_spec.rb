@@ -6,6 +6,7 @@ RSpec.feature "Sign up", type: :feature do
     click_link "Sign up!"
   end
 
+  let (:error_pw_blank) { "Password can't be blank" }
   let (:error_pw_short) { "Password is too short (minimum is 8 characters)" }
   let (:error_pw_long) { "Password is too long (maximum is 20 characters)" }
   let (:error_em_inv) { "Email is invalid" }
@@ -17,7 +18,7 @@ RSpec.feature "Sign up", type: :feature do
 
   scenario "If no fields are filled out, displays the appropriate error messages" do
     click_button "Enter details"
-    page_should_have_content([error_name, error_em_inv, error_pw_short])
+    page_should_have_content([error_name, error_em_inv, error_pw_blank])
   end
 
   scenario "Password can't be too long or too short" do
