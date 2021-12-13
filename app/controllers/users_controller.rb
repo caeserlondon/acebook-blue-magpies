@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       shout "saved new user"
       session[:user_id] = @user.id
       login_url @user
+      redirect_to users_path
     else
       shout "failed to save new user"
       render :new
