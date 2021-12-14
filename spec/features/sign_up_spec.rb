@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Sign up", type: :feature do
   before(:each) do
     visit "/"
-    click_link "Sign up!"
+    click_link "Sign up"
   end
 
   let (:error_pw_blank) { "Password can't be blank" }
