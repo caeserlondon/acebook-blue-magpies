@@ -1,13 +1,23 @@
 <h1>Welcome to <span style="color: #191970">Blue-Magpie Acebook!</span></h1>
-<h1>You are logged in as <%= @user.name %></h1>
+<h1><%= @user.name[-1, 1] == "s" ? "#{@user.name}'" : "#{@user.name}'s" %> profile</h1>
 
-<%= @user.email %>
+<div class="id_post_view">
+<% @posts.reverse.each do |post| %>
+  <% if post.user_id == @user.id %>
+  <div class="post_view">
+    User <%= post.name %>: <%= post.message %>
+  </div>
+  <% end %>
+<% end %>
+</div><br>
 <div>
-
-<h3> Your ID is:    <%= @user.id %> </h3>
-<div>
-
-
-<%= link_to "Home", root_path %>
-<%# <%= form_tag '/users' %>
+  Your Friends:
+  <ul>
+  <% @users.each do |user| %>
+    <% if user.id != session[:user_id] %>
+    <li><%= link_to user.name, user  %></li>
+    <% end %>
+    <% end %>
+  </ul>
+</div>
 
