@@ -1,6 +1,7 @@
-
+<% session[:current_profile] = session[:user_id] %>
 
 <ul id="post_list">
+
 <% @posts.reverse_each do |post| %>
 <li>
   <%= link_to post.message, post %>
