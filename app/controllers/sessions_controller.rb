@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    skip_before_action :require_login
     def create
         @user = User.find_by(email: params[:email])
 
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
     
     def destroy
         # User.find(session[:user_id]).destroy      
-        session[:user_id] = nil         
+        session[:user_id] = nil
         redirect_to root_path
       end
 end

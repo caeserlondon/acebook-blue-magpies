@@ -3,17 +3,27 @@ RSpec.feature "", type: :feature do
     visit "/"
   end
 
-  scenario "navbar lists all necessary links" do
-    expect(page).to have_content 'Login'
+  scenario "navbar has log in and sign up links when not logged in" do
+    expect(page).to have_content 'Log in'
     expect(page).to have_content 'Sign up'
-    expect(page).to have_content 'Posts'
-    expect(page).to have_content 'Profile'
   end
 
-  scenario "navbar links takes user to appropriate page" do
+  scenario "navbar has posts, profile and logout links when logged in" do
     sign_up
-    check_link_path("Login", '/login')
+    log_in
+    expect(page).to have_content 'Posts'
+    expect(page).to have_content 'Profile'
+    expect(page).to have_content 'Log out'
+  end
+
+  scenario "navbar links takes user to appropriate page when not logged in" do
+    check_link_path("Log in", '/login')
     check_link_path("Sign up", '/users/new')
+  end
+
+  scenario "navbar links takes user to appropriate page when logged in" do
+    sign_up
+    log_in
     check_link_path("Posts", '/posts')
   end
 
@@ -22,6 +32,13 @@ RSpec.feature "", type: :feature do
     user = User.first
     check_link_path("Profile", "/users/#{user.id}")
     expect(page).to have_content user.name
+  end
+
+  scenario "navbar Logout link logs user out" do
+    #sign_up
+    #log_in
+    #click_link "Log out"
+    #expect(session[:user_id]).to eq nil
   end
 
   def check_link_path(link, path)
