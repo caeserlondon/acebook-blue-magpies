@@ -1,6 +1,6 @@
 <h1> <%= @post.message %> </h1>
 <%= button_to "Like", post_likes_path(@post), method: :post %><br> <%= button_to "Edit Post", edit_post_path %>
-
+<br>
 <%= button_to "Delete Post", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'} %>
 
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? "Like" : "Likes" %></p>
