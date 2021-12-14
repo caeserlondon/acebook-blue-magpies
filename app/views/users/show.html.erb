@@ -1,4 +1,12 @@
 <h1>Welcome to <span style="color: #191970">Blue-Magpie Acebook!</span></h1>
 <h1>You are viewing <%= @user.name %>'s profile</h1>
 
+<p>Posts should show below.</p>
+<% @posts.each do |post| %>
+  <% if post.user_id == @user.id %>
+  <p>
+    User <%= post.name %>: <%= post.message %>
+  </p>
+<% end %>
+  <% end %>
 <%= link_to "Log out", logout_path, method: :delete %>
