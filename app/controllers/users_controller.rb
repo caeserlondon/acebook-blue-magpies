@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #skip_before_action :require_login, only: [:new, :create]
+  before_action :require_login, except: [:new, :create]
   def index
     shout "index page loaded"
   end
@@ -39,6 +39,13 @@ class UsersController < ApplicationController
 
   def shout(message)
     # puts "\n#{"="*35}\nPAY ATTENTION TO ME!\n#{message}\n#{"="*35}\n\n"
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to login_url # halts request cycle
+    end
   end
 
 end
