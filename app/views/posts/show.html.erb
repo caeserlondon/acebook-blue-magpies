@@ -2,12 +2,33 @@
 <%= button_to "Like", post_likes_path(@post), method: :post %>
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? "Like" : "Likes" %></p>
 
+<h2>Images</h2>
+
+<%= form_for @post do |form| %>
+  <%= form.label :images %>
+  <%= form.file_field :images, multiple: true %>
+
+  <%= form.submit "Submit" %>
+<% end %>
+
+<br>
+<br>
+
+
+<%(0...@post.images.count).each do |image| %>
+<%= image_tag(@post.thumbnail(image)) %>
+<% end %>
+
+
+
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
   <p>
     <%= comment.comment_body %>
   </p>
 <% end %>
+
+
 
 <%= form_with model: [ @post, @post.comments.build ], local: true do
   |form|  %>

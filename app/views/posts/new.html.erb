@@ -1,6 +1,23 @@
 <%= form_for @post do |form| %>
   <%= form.label :message %>
   <%= form.text_field :message %>
-
-  <%= form.submit "Submit" %>
+  <br>
+  <br>
+  <%= form.label :images %>
+  <%= form.file_field :images, multiple: true %>
+  <%= form.submit "Upload Files" %>
+<br>
+<br>
+  <%= form.submit "Create a Post" %>
 <% end %>
+
+
+
+
+
+
+<%= form_for @post do |form| %>
+  <%= form.label :message %>
+  <%= form.text_field :message %>
+  <%= form.submit "Create a Post" %>
+  <% end %>
