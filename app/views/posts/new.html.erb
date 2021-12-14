@@ -4,17 +4,18 @@
 <% end %>
 
 <% if logged_in? %>
-<%= form_for @post do |form| %>
-  <%= form.label :message %>
-  <%= form.text_field :message %>
-  <br>
-  <br>
-  <%= form.label :images %>
-  <%= form.file_field :images, multiple: true %>
-  <%= form.submit "Upload Files" %>
-<br>
-<br>
-<%= form.hidden_field :user_id, value: session[:current_user_id] %>
-  <%= form.submit "Create a Post" %>
-<% end %>
+  <%= form_for @post do |form| %>
+    <%= form.label :message %>
+    <%= form.text_field :message %>
+    <br>
+    <br>
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+    <%= form.submit "Upload Files" %>
+    <br>
+    <br>
+    <%= form.hidden_field :user_id, value: session[:current_user_id] %>
+    <%= form.hidden_field :loc_id, value: session[:current_profile] %>
+    <%= form.submit "Create a Post" %>
+  <% end %>
 <% end %>
