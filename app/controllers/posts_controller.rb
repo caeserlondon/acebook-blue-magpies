@@ -5,7 +5,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to posts_url
+    # redirect_to posts_url
+    redirect_to User.find(@post.loc_id)
   end
 
   def index
@@ -22,7 +23,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:message, :user_id)
+    params.require(:post).permit(:message, :user_id, :loc_id)
   end
 
 end

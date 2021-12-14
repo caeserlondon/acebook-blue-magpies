@@ -9,6 +9,8 @@
   <%= form.text_field :message %>
 
   <%= form.hidden_field :user_id, value: session[:current_user_id] %>
+
+  <%= form.hidden_field :loc_id, value: session[:current_profile] %>
   
   <%= form.submit "Submit" %>
 <% end %>
