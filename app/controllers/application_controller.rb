@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-#   skip_before_action :require_login, :only =>[:logged_in?]
+  #before_action :require_login
   protect_from_forgery with: :exception
   helper_method :current_user, :logged_in?
   
