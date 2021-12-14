@@ -11,4 +11,14 @@
     <% end %>
   <% end %>
   </div>
+  <div>
+    Your Friends:
+    <ul>
+    <% @users.each do |user| %>
+        <% if user.id != session[:user_id] %>
+        <li><%= link_to user.name, user  %></li>
+        <% end %>
+        <% end %>
+    </ul>
+  </div>
 <%= link_to "Log out", logout_path, method: :delete %>
