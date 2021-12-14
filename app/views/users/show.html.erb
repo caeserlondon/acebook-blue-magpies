@@ -1,7 +1,7 @@
 <% session[:current_profile] = @user.id %>
 
 <h1>Welcome to <span style="color: #191970">Blue-Magpie Acebook!</span></h1>
-<h1>You are viewing <%= @user.name %>'s profile</h1>
+<h1><%= @user.name[-1, 1] == "s" ? "#{@user.name}'" : "#{@user.name}'s" %> profile</h1>
 
 <p>Your Wall</p>
 
@@ -10,17 +10,14 @@
       <% if post.loc_id == @user.id %>
         <div class="post_view">
           User <%= post.name %>: <%= link_to post.message, post %>
-        <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes" %></p>
+          <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes" %></p>
         </div>
       <% end %>
     <% end %>
   </div><br>
 
-
-
-
   <div> 
-    <%= link_to new_post_path, {"id"=>"1"} do %>
+    <%= link_to new_post_path do %>
       New post
     <% end %>
   </div><br>
@@ -35,4 +32,3 @@
       <% end %>
     </ul>
   </div>
-

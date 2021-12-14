@@ -1,7 +1,29 @@
+
   <h1> User name: <%= @post.name %> </h1>
   <h3>Message: <%= @post.message %> </h3>
-<%= button_to "Like", post_likes_path(@post), method: :post %>
+<%= button_to "Like", post_likes_path(@post), method: :post %><br> <%= button_to "Edit Post", edit_post_path %>
+<br>
+<%= button_to "Delete Post", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'} %>
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? "Like" : "Likes" %></p>
+
+<h2>Images</h2>
+
+<%= form_for @post do |form| %>
+  <%= form.label :images %>
+  <%= form.file_field :images, multiple: true %>
+
+  <%= form.submit "Submit" %>
+<% end %>
+
+<br>
+<br>
+
+
+<%(0...@post.images.count).each do |image| %>
+<%= image_tag(@post.thumbnail(image)) %>
+<% end %>
+
+
 
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
@@ -10,20 +32,17 @@
   </p>
 <% end %>
 
+
+
 <%= form_with model: [ @post, @post.comments.build ], local: true do
   |form|  %>
   <p>
     <%= form.label :add_your_comments %><br>
     <%= form.text_area :comment_body %>
-
     <%= form.hidden_field :user_id, value: session[:current_user_id] %>
   </p>
   <p>
     <%= form.submit %>
   </p>
-<% end %>
-
-<%= link_to posts_url do %>
-    Back to Posts
 <% end %>
 

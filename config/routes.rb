@@ -5,17 +5,16 @@ Rails.application.routes.draw do
   # get "/users", to: "users#index"
   # get "/sign_up", to: "users#new"
   resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
+  # resources :posts, only: [:new, :create, :edit, :update, :show, :destroy]
 
   get '/login', to: 'sessions#login'
   post '/login', to:'sessions#create'
   get '/users', to: 'users#show'
+  post '/logout', to: 'sessions#destroy'
   delete '/logout', to: 'sessions#destroy'
-  # post '/logout', to: 'sessions#destroy'
-
-  # get "/posts"
+  post '/posts/:id/edit', to: 'posts#edit'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
 
   resources :posts do
     resources :comments

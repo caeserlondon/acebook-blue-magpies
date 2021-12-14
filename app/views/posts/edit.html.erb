@@ -1,0 +1,15 @@
+<h1>Edit Post</h1>
+
+<%= form_for @post do |form| %>
+  <%= form.label :message %>
+  <%= form.text_field :message %>
+  <br>
+  <br>
+  <%= form.label :images %>
+  <%= form.file_field :images, multiple: true %>
+  <%= form.submit "Upload Files" %>
+<br>
+<br>
+  <%= form.submit "Update the Post" %>
+<% end %>
+
