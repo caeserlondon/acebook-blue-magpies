@@ -16,6 +16,24 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  
+  end
+
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+    redirect_to posts_url
+    else
+      render :edit
+    end
+  end
+    
+ 
+
 
 
   private
@@ -23,4 +41,6 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:message, images: [])
   end
+
+  
 end
