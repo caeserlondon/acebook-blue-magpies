@@ -1,9 +1,5 @@
-<% if logged_in? %>
-    <h2>Hi <%= current_user.name %>
-    </h2>
-<% end %>
+<h1>Edit Post</h1>
 
-<% if logged_in? %>
 <%= form_for @post do |form| %>
   <%= form.label :message %>
   <%= form.text_field :message %>
@@ -14,7 +10,6 @@
   <%= form.submit "Upload Files" %>
 <br>
 <br>
-<%= form.hidden_field :user_id, value: session[:current_user_id] %>
-  <%= form.submit "Create a Post" %>
+  <%= form.submit "Update the Post" %>
 <% end %>
-<% end %>
+
