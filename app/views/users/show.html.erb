@@ -1,25 +1,23 @@
 <h1>Welcome to <span style="color: #191970">Blue-Magpie Acebook!</span></h1>
-<h1>You are viewing <%= @user.name %>'s profile</h1>
+<h1><%= @user.name[-1, 1] == "s" ? "#{@user.name}'" : "#{@user.name}'s" %> profile</h1>
 
-<p>Your Wall</p>
-  <div class="id_post_view">
-  <% @posts.reverse.each do |post| %>
-    <% if post.user_id == @user.id %>
-    <div class="post_view">
-      User <%= post.name %>: <%= post.message %>
-    </div>
-    <% end %>
+<div class="id_post_view">
+<% @posts.reverse.each do |post| %>
+  <% if post.user_id == @user.id %>
+  <div class="post_view">
+    User <%= post.name %>: <%= post.message %>
+  </div>
   <% end %>
-  </div>
-  <div>
-    Your Friends:
-    <ul>
-    <% @users.each do |user| %>
-        <% if user.id != session[:user_id] %>
-        <li><%= link_to user.name, user  %></li>
-        <% end %>
-        <% end %>
-    </ul>
-  </div>
-<%= link_to "Log out", logout_path, method: :delete %>
+<% end %>
+</div><br>
+<div>
+  Your Friends:
+  <ul>
+  <% @users.each do |user| %>
+    <% if user.id != session[:user_id] %>
+    <li><%= link_to user.name, user  %></li>
+    <% end %>
+    <% end %>
+  </ul>
+</div>
 
